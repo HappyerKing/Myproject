@@ -17,6 +17,7 @@ import TabBar from '../components/TabBar.js'
 import TabNavigator from 'react-native-tab-navigator';
 import Home from './Home';
 import Shoutem from './Shoutem';
+import IconDemo from './IconDemo'
 
 const tabTitles = ['home', '逛吃', '我的']
 const tabIcons = [
@@ -45,7 +46,7 @@ export default class TabView extends Component {
           renderSelectedIcon={() => <Image style={styles.icon} source={tabSelectedIcon[0]} />}
           badgeText="1"
           onPress={() => this.setState({ selectedTab: 'home' })}>
-          <Shoutem />
+          <Home />
         </TabNavigator.Item>
          <TabNavigator.Item
           selected={this.state.selectedTab === 'food'}
@@ -53,7 +54,7 @@ export default class TabView extends Component {
           renderIcon={() => <Image style={styles.icon} source={tabIcons[1]} />}
           renderSelectedIcon={() => <Image style={styles.icon} source={tabSelectedIcon[1]} />}
           onPress={() => this.setState({ selectedTab: 'food' })}>
-           <Home tabLabel="Food" />
+           <IconDemo  />
         </TabNavigator.Item>
         <TabNavigator.Item
           selected={this.state.selectedTab === 'profile'}
@@ -61,26 +62,9 @@ export default class TabView extends Component {
           renderIcon={() => <Image style={styles.icon} source={tabIcons[2]} />}
           renderSelectedIcon={() => <Image style={styles.icon} source={tabSelectedIcon[2]} />}
           onPress={() => this.setState({ selectedTab: 'profile' })}>
-           <Home tabLabel="Profile" />
+           <Shoutem/>
         </TabNavigator.Item>
       </TabNavigator>
-
-     /*<ScrollableTabView 
-        renderTabBar={() =>
-            <TabBar
-                tabNames={tabTitles}
-                tabIconNames={tabIcons}
-                selectedTabIconNames={tabSelectedIcon}
-            />
-        }
-        tabBarPosition='bottom'
-        locked
-        scrollWithoutAnimation
-        >
-        <Home tabLabel="home" />
-        <Home tabLabel="Flow" />
-        <Home tabLabel="Jest" />
-      </ScrollableTabView>*/
     );
   }
 }

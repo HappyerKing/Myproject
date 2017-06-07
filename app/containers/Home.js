@@ -8,26 +8,49 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 import userStore from '../mobx/userStore';
+import ScrollableTabView ,{ScrollableTabBar} from 'react-native-scrollable-tab-view';
+import Shoutem from './Shoutem';
+import IconDemo from './IconDemo';
+import { NavigationBar,Title ,Icon,DropDownMenu} from '@shoutem/ui';
 const {user:{name}} = userStore;
 
 export default class Home extends Component {
+  state={
+    selectedCar:{}
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          {this.props.tabLabel+name}
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View style={{flex:1,}}>
+        <Image
+          source={require('../resource/image-3.png')}
+          style={{ width: Common.width, height: 70 }}
+        >
+          <NavigationBar
+            styleName="clear"
+            leftComponent={<Icon name="sidebar" />}
+            centerComponent={<Title>首页</Title>}
+            rightComponent={<Icon name="sidebar" />}
+          />
+        </Image>
+        <ScrollableTabView
+          style={{marginTop: 0, }}
+          renderTabBar={() => <ScrollableTabBar />}
+        >
+            <Text tabLabel='Tab #1'>My</Text>
+            <Text tabLabel='Tab #2'>favorite</Text>
+            <Text tabLabel='Tab #3'>project</Text>
+            <Shoutem tabLabel='tab #4'/>
+            <Text tabLabel='Tab #5'>My</Text>
+            <Text tabLabel='Tab #6'>favorite</Text>
+            <Text tabLabel='Tab #7'>project</Text>
+        </ScrollableTabView>
       </View>
+     
     );
   }
 }
