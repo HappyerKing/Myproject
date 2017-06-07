@@ -1,5 +1,5 @@
 /**
- * Created by gdz on 17/6/5.
+ * common
  */
 import {Dimensions, PixelRatio} from 'react-native';
 

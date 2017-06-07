@@ -10,13 +10,15 @@ import {
   Text,
   View
 } from 'react-native';
+import userStore from '../mobx/userStore';
+const {user:{name}} = userStore;
 
 export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          {this.props.tabLabel}
+          {this.props.tabLabel+name}
         </Text>
         <Text style={styles.instructions}>
           To get started, edit index.ios.js
