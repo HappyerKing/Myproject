@@ -34,7 +34,24 @@ export default class Home extends Component {
             styleName="clear"
             leftComponent={<Icon name="sidebar" />}
             centerComponent={<Title>首页</Title>}
-            rightComponent={<Icon name="sidebar" />}
+            rightComponent={<DropDownMenu
+                options={[
+                  { name: 'All', value: 1 },
+                  { name: 'Sport', value: 1 },
+                  { name: 'World', value: 1 },
+                  { name: 'Lifestyle', value: 1 },
+                  { name: 'Food', value: 1 },
+                  { name: 'Music', value: 1 },
+                  { name: 'Movies', value: 1 },
+                  { name: 'Tech', value: 1 },
+                  { name: 'Fun', value: 1 },
+                  { name: 'Fashion', value: 1 },
+                ]}
+                selectedOption={this.state.selectedCar ? this.state.selectedCar : { name: 'All', value: 1 }}
+                onOptionSelected={(car) => this.setState({ selectedCar: car })}
+                titleProperty="name"
+                valueProperty="value"
+              />}
           />
         </Image>
         <ScrollableTabView
